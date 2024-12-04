@@ -1,0 +1,13 @@
+class Solution:
+    def reverseArray(self, arr):
+        # Reverse the array in place
+        start = 0
+        end = len(arr) - 1
+        
+        while start < end:
+            # Swap elements at start and end
+            arr[start], arr[end] = arr[end], arr[start]
+            start += 1
+            end -= 1
+        
+        return arr  # Return the reversed array
