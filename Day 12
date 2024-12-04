@@ -1,0 +1,34 @@
+def circularSubarraySum(arr):
+    n = len(arr)
+    
+    
+    def kadane(arr):
+        max_sum = curr_sum = arr[0]
+        for i in range(1, n):
+            curr_sum = max(arr[i], curr_sum + arr[i])
+            max_sum = max(max_sum, curr_sum)
+        return max_sum
+    
+    max_subarray_sum = kadane(arr)
+    
+    
+    total_sum = sum(arr)
+    
+     
+    def kadane_min(arr):
+        min_sum = curr_sum = arr[0]
+        for i in range(1, n):
+            curr_sum = min(arr[i], curr_sum + arr[i])
+            min_sum = min(min_sum, curr_sum)
+        return min_sum
+    
+    min_subarray_sum = kadane_min(arr)
+    
+    
+    if total_sum == min_subarray_sum:
+        return max_subarray_sum
+    
+    
+    circular_sum = total_sum - min_subarray_sum
+    return max(max_subarray_sum, circular_sum)
+
